@@ -2,7 +2,14 @@
 	<div class="title" flex>
 		<label class="md-display-2">Welcome to E-Sign Live Lottery</label>
 	</div>
-	<div class="content" flex>
-		<label>There is {{ctrl.getPotAmount()}}$ in pot.</label>
+	<div class="content" flex layout="column">
+		<div flex>
+			<label>There is {{ctrl.potAmount}}$ in pot.</label>
+		</div>
+		<div flex>
+			<md-button class="md-primary md-raised" ng-click="ctrl.openBuyTicket($event)">
+	      Buy Ticket
+	    </md-button>
+		</div>
 	</div>
 </div>
