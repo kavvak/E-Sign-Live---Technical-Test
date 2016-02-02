@@ -22,7 +22,7 @@
 		self.initialize();
 
 		function initialize() {
-			for (var i = 1; i <= 50; i++) {
+			for (var i = 50; i > 0; i--) {
 				var ball = new Ball(i);
 				self.lotteryBalls.push(ball);
 				if (self.cachedTickets.length) {
@@ -38,6 +38,7 @@
 			if (self.unassignedBalls.length) {
 				var ball = self.unassignedBalls.pop();
 				payTheTicket(ball, name, TICKET_PRICE);
+				showBall(ball, 'You just bought this ball.');
 			} else {
 				self.cachedTickets.push({name: name, price: TICKET_PRICE});
 			}
@@ -49,30 +50,27 @@
 			self.potAmount = self.potAmount + ticketPrice;
 		}
 
+		function showBall(ball) {
+			$mdDialog.show({
+				controller: function($scope) {
+					$scope.ball = ball;
+				},
+				templateUrl: 'app/dialogs/bought-ball.html',
+				parent: angular.element(document.body),
+				clickOutsideToClose: true
+			});
+		}
+
 		function openBuyTicket(ev) {
 			$mdDialog.show({
-				controller: DialogController,
+				controller: 'BuyTicketController',
 				templateUrl: 'app/dialogs/buy-ticket.html',
 				parent: angular.element(document.body),
 				targetEvent: ev,
 				clickOutsideToClose: true
-			}).then(function(results) {
-				console.log(results);
-				self.buyNewTicket(self.newBuyer);
+			}).then(function(name) {
+				self.buyNewTicket(name);
 			});
 		}
 	});
 })(angular.module('lottery'));
-
-function DialogController($scope, $mdDialog) {
-	'use strict';
-
-  $scope.ok = function() {
-		if (!$scope.newBuyerForm.$invalid) {
-			$mdDialog.hide($scope.newBuyer);
-		}
-  };
-  $scope.cancel = function() {
-    $mdDialog.cancel();
-  };
-}
