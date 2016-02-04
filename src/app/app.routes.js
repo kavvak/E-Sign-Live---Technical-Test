@@ -17,9 +17,6 @@
       .state('404', {
         url: '/*location',
         templateUrl: 'app/404.html',
-        controller: ['$stateParams', function($stateParams) {
-          this.location = $stateParams.location;
-        }],
         controllerAs: 'error'
       });
 

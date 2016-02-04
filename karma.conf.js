@@ -4,7 +4,7 @@ var files = require('./test/files');
 
 module.exports = function(config) {
   config.set({
-    frameworks: ['jasmine'],
+    frameworks: ['mocha'],
 
     files: [].concat(
       files.libs,
@@ -12,23 +12,28 @@ module.exports = function(config) {
       files.testLibs
     ),
 
+    'plugins': [
+      'karma-mocha',
+      'karma-coverage',
+      'karma-jshint-preprocessor',
+      'karma-mocha-reporter',
+      'karma-chrome-launcher'
+    ],
+
     preprocessors: {
-      'src/app/**/!(*.spec).js': ['coverage'],
       'src/app/**/*.spec.js': ['jshint'],
-      'test/unit/**/*.js': ['jshint']
+      'src/app/**/!(*.spec).js': ['coverage'],
+      'test/mock/**/*.js': ['jshint']
     },
 
     jshintPreprocessor: {
       stopOnError: true
     },
 
-    reporters: ['jasmine-runner', 'coverage'],
-    
-    jasmineRunnerReporter: {
-      outputFile: 'jasmine-runner.html',
-      includes: [
-        "node_modules/jasmine-expect/dist/jasmine-matchers.js"
-      ]
+    reporters: ['mocha', 'coverage'],
+
+    mochaReporter: {
+      output: 'minimal'
     },
 
     coverageReporter: {
@@ -55,6 +60,7 @@ module.exports = function(config) {
 
     autoWatch: true,
 
-    browsers: ['PhantomJS']
+    browsers: ['Chrome'],
+    browserNoActivityTimeout: 30000
   });
 };

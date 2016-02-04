@@ -22,6 +22,10 @@
       this.name = name;
     };
 
+    Ball.prototype.setPrice = function(price) {
+      this.price = price;
+    };
+
     Ball.prototype.isAssigned = function() {
       return !!this.name;
     };

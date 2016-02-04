@@ -4,25 +4,25 @@
       <div class="md-toolbar-tools">
         <h2>Purchase Ticket</h2>
         <span flex></span>
-        <md-button class="md-icon-button" type="button" ng-click="cancel()">
+        <md-button class="md-icon-button" type="button" ng-click="$mdDialog.cancel()">
           <md-icon md-svg-src="content/images/ic_clear_white_24px.svg" aria-label="Close dialog"></md-icon>
         </md-button>
       </div>
     </md-toolbar>
     <md-dialog-content flex>
-      <div class="md-dialog-content buy-ticket-content">
-        <label>Price for a ticket is {{ ticketPrice }}$.</label>
-        <md-input-container>
+      <div class="md-dialog-content buy-ticket-content" layout="column" layout-align="start center">
+        <label flex>Price for a ticket is {{ ticketPrice }}$.</label>
+        <md-input-container flex>
           <label>Buyer's Name (Required)</label>
           <input type="text" md-maxlength="30" required name="name" ng-model="newBuyer">
         </md-input-container>
       </div>
     </md-dialog-content>
     <md-dialog-actions class="dialog-actions" flex>
-      <md-button type="button" class="" ng-click="cancel()">
+      <md-button type="button" class="" ng-click="$mdDialog.cancel()">
         Never mind, I'll better not.
       </md-button>
-      <md-button type="submit" class="md-raised md-warn" ng-click="ok()">
+      <md-button type="submit" class="md-raised md-warn" ng-disabled="newBuyerForm.$invalid" ng-click="$mdDialog.hide(newBuyer)">
         Buy
       </md-button>
     </md-dialog-actions>
