@@ -1,8 +1,8 @@
-<md-dialog aria-label="Buy New Ticket" novalidate="novalidate" ng-cloak>
+<md-dialog aria-label="purchase Ticket" novalidate="novalidate" ng-cloak>
   <form name="newBuyerForm" layout="column">
     <md-toolbar flex>
       <div class="md-toolbar-tools">
-        <h2>Buy New Ticket</h2>
+        <h2>Purchase Ticket</h2>
         <span flex></span>
         <md-button class="md-icon-button" type="button" ng-click="cancel()">
           <md-icon md-svg-src="content/images/ic_clear_white_24px.svg" aria-label="Close dialog"></md-icon>
@@ -11,6 +11,7 @@
     </md-toolbar>
     <md-dialog-content flex>
       <div class="md-dialog-content buy-ticket-content">
+        <label>Price for a ticket is {{ ticketPrice }}$.</label>
         <md-input-container>
           <label>Buyer's Name (Required)</label>
           <input type="text" md-maxlength="30" required name="name" ng-model="newBuyer">

@@ -22,6 +22,10 @@
       this.name = name;
     };
 
+    Ball.prototype.isAssigned = function() {
+      return !!this.name;
+    };
+
     return Ball;
   }
 

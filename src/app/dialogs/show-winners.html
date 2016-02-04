@@ -1,0 +1,24 @@
+<md-dialog aria-label="Lottery Winners" novalidate="novalidate" ng-cloak>
+  <form name="winnersForm" layout="column">
+    <md-toolbar flex>
+      <div class="md-toolbar-tools">
+        <h2>Winners of this round</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" type="button" ng-click="cancel()">
+          <md-icon md-svg-src="content/images/ic_clear_white_24px.svg" aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content flex>
+      <div class="md-dialog-content" layout="row" layout-align="center center">
+        <div ng-repeat="ball in winners" ng-include="'app/domain/ball.html'" flex
+        layout="column" layout-align="center center"></div>
+      </div>
+    </md-dialog-content>
+    <md-dialog-actions class="dialog-actions" flex layout="row" layout-align="center center">
+      <md-button type="submit" class="md-raised md-warn" ng-click="ok()">
+        Start New Round
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

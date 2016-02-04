@@ -1,2 +1,10 @@
-<md-button disabled class="md-fab">{{ball.number}}</md-button>
-<label>{{ball.name}}</label>
+<div class="ball" layout="column" layout-align="center center">
+  <md-button class="md-fab md-title">{{ball.number}}</md-button>
+  <label class="md-subhead ellipsis" flex>
+    {{ball.name}}
+    <md-tooltip ng-direction="top">{{ball.name}}</md-tooltip>
+  </label>
+  <label class="md-subhead ellipsis" ng-if="ball.isAssigned() && ball.price" flex>
+    {{ball.price | number : 2}}$
+  </label>
+</div>

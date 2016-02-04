@@ -7,8 +7,21 @@
 			<label>There is {{ctrl.potAmount}}$ in pot.</label>
 		</div>
 		<div flex>
-			<md-button class="md-primary md-raised" ng-click="ctrl.openBuyTicket($event)">
-	      Buy Ticket
+			<md-button class="md-primary md-raised menu-button" ng-click="ctrl.openBuyTicket($event)"
+			ng-disabled="ctrl.drawing || ctrl.unassignedBalls.length === 0 || ctrl.winners.length > 0">
+	      Purchase
+	    </md-button>
+		</div>
+		<div flex>
+			<md-button class="md-primary md-raised menu-button" ng-click="ctrl.drawBalls($event)"
+			ng-disabled="ctrl.drawing || ctrl.winners.length > 0">
+	      Draw
+	    </md-button>
+		</div>
+		<div flex>
+			<md-button class="md-primary md-raised menu-button" ng-click="ctrl.showWinners($event)"
+			ng-disabled="ctrl.drawing || ctrl.winners.length === 0">
+	      Winners
 	    </md-button>
 		</div>
 	</div>
