@@ -4,7 +4,10 @@
 	</div>
 	<div class="content" flex layout="column">
 		<div flex>
-			<label>There is {{ctrl.potAmount}}$ in pot.</label>
+			<p class="md-title pot-amount-text">There is <label class="pot-amount">{{ctrl.potAmount}}$</label> in pot.</p>
+		</div>
+		<div flex>
+			<p class="md-title lottery-balls-text">There are <label class="lottery-balls">{{ctrl.unassignedBalls.length}}</label> tickets available.</p>
 		</div>
 		<div flex>
 			<md-button class="md-primary md-raised menu-button" ng-click="ctrl.openBuyTicket($event)"

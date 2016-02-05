@@ -6,7 +6,6 @@
 	module.controller('LotteryController', function(Ball, $mdDialog, $timeout,
 	$scope, TICKET_PRICE, LOTTERY_BALLS, INITIAL_POT_AMOUNT,
 	WINNER_PRICE, NUMBER_OF_WINNERS) {
-		
 		var self = this;
 		self.buyNewTicket = buyNewTicket;
 		self.initialize = initialize;
